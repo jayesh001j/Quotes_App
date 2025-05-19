@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.quotes_app.Moden.Quotes_Model;
 import com.example.quotes_app.Moden.Quotes_List;
 import com.example.quotes_app.R;
 import com.example.quotes_app.databinding.ActivityMainBinding;
+import com.google.android.material.search.SearchBar;
 
 import java.util.ArrayList;
 
@@ -33,22 +35,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Intent intent = getIntent();
-        if (intent.hasExtra("QUOTE_TEXT")) {
-            String quoteText = intent.getStringExtra("QUOTE_TEXT");
-
-            // Use the data as needed
-            TextView textView = findViewById(R.id.risi2);
-            textView.setText(quoteText);
-        } else {
-            // Handle the case where "QUOTE_TEXT" is not present in the Intent
-        }
-
-        for (int i = 0; i < image.length; i++) {
-            Quotes_Model t1 = new Quotes_Model(image[i], Quotes[i]);
-            quotesList.add(t1);
-        }
-
 
         for (int i = 0; i < image.length; i++) {
             Quotes_Model t1 = new Quotes_Model(image[i], Quotes[i]);
@@ -59,5 +45,6 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager R2 = new GridLayoutManager(this, 2);
         binding.risi1.setAdapter(quotesListAdapter);
         binding.risi1.setLayoutManager(R2);
+
     }
 }
