@@ -38,20 +38,19 @@ public class Quotes_List extends RecyclerView.Adapter<Quotes_List.QuotesViewHold
 
     @Override
     public void onBindViewHolder(@NonNull QuotesViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        holder.sadimges.setImageResource(l1.get(position).image);
-        holder.sadtext.setText(l1.get(position).Quotes);
+        holder.sadimges.setImageResource(l1.get(position).getImage());
+        holder.sadtext.setText(l1.get(position).getQuotes());
 
-        holder.cardid.setOnClickListener(new View.OnClickListener() {
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Sad_imosens.class);
-
-                intent.putExtra("QUOTE_TEXT", l1.get(position).Quotes);
-
-
+                intent.putExtra("QUOTE_TEXT", l1.get(position).getQuotes());
                 context.startActivity(intent);
             }
         });
+
 
     }
 
@@ -71,6 +70,7 @@ public class Quotes_List extends RecyclerView.Adapter<Quotes_List.QuotesViewHold
             sadimges = itemView.findViewById(R.id.sadimges);
             sadtext = itemView.findViewById(R.id.sadtext);
             cardid = itemView.findViewById(R.id.cardid);
+
 
 
         }
